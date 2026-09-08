@@ -284,7 +284,7 @@ The manuscript uses scenario labels S0-S5, while the R objects retain historical
 
 `table_scenario_results.R` remaps these objects to manuscript labels. `plot_scenario_results.R` uses the historical internal labels instead, so its legends call increased uptake “S2,” reduced uptake “S3,” older-only uptake “S5,” and reduced older-only uptake “S6.”
 
-The no-vaccination object additionally changes `D_waning_R` and `D_waning_V` from 365 to 1730 days. Therefore, the current S1 implementation differs from the methodology's stated design in which counterfactuals change vaccination trajectories while retaining other assumptions.
+The no-vaccination object changes only the vaccination trajectory. It retains the baseline `D_waning_R` and `D_waning_V` values of 365 days, matching the methodology's stated design in which counterfactuals change vaccination trajectories while retaining other assumptions.
 
 ## Software Requirements
 

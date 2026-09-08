@@ -253,9 +253,6 @@ scenario_parameters1$vaccfun4 = vfun4
 scenario_parameters1$vaccfun5 = vfun5
 
 
-scenario_parameters1$D_waning_R = 1730
-scenario_parameters1$D_waning_V = 1730
-
 
 
 ###################################################################
