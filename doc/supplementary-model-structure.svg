@@ -1,0 +1,224 @@
+<svg width="100%" viewBox="0 0 1800 1080" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Extended age-stratified SEIR model used for the vaccination scenarios</title>
+  <desc id="desc">Vaccinated and unvaccinated disease pathways, vaccination and waning flows, vaccine protection factors, and age-specific mixing across five age groups.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 z" fill="#46515c"/>
+    </marker>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1677a6"/>
+    </marker>
+    <marker id="arrow-gold" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8a570f"/>
+    </marker>
+    <marker id="arrow-purple" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 z" fill="#7253a3"/>
+    </marker>
+    <style>
+      text { font-family: Arial, Helvetica, sans-serif; fill: #25313b; }
+      .heading { font-size: 28px; font-weight: 700; }
+      .subheading { font-size: 20px; font-weight: 700; }
+      .label { font-size: 18px; font-weight: 700; }
+      .small { font-size: 15px; }
+      .tiny { font-size: 13px; }
+      .parameter { font-size: 16px; font-weight: 500; }
+      .parameter tspan { font-size: 12px; }
+      .flow-label { font-size: 17px; font-weight: 500; fill: #8a570f; }
+      .flow-label tspan { font-size: 13px; }
+      .vacc-label { font-size: 19px; font-weight: 600; fill: #1677a6; }
+      .vacc-label tspan { font-size: 14px; }
+      .box-text-large { font-size: 18px; }
+      .box-text-large tspan { font-size: 14px; }
+      .box-note-large { font-size: 16px; }
+      .legend-title { font-size: 20px; font-weight: 700; }
+      .legend-text { font-size: 18px; }
+      .legend-text tspan { font-size: 14px; }
+      .panel { fill: #fbfcfd; stroke: #aeb8c2; stroke-width: 1.5; rx: 12; }
+      .lane-u { fill: #f6f8fa; stroke: #8b98a5; stroke-width: 1.5; rx: 10; }
+      .lane-v { fill: #edf7fb; stroke: #65a9c5; stroke-width: 1.5; rx: 10; }
+      .node { fill: #ffffff; stroke: #46515c; stroke-width: 2; rx: 7; }
+      .sus { fill: #eaf6ed; stroke: #2c8c4b; }
+      .exposed { fill: #fff3e6; stroke: #d66b1f; }
+      .infectious { fill: #e8f4fb; stroke: #1677a6; }
+      .outcome { fill: #f4effa; stroke: #7253a3; }
+      .recovered { fill: #fff8db; stroke: #b7791f; }
+      .death { fill: #f1f2f3; stroke: #59636e; }
+      .flow { fill: none; stroke: #46515c; stroke-width: 2; marker-end: url(#arrow); }
+      .vacc { fill: none; stroke: #1677a6; stroke-width: 3; marker-end: url(#arrow-blue); }
+      .waning { fill: none; stroke: #8a570f; stroke-width: 2.5; stroke-dasharray: 8 5; marker-end: url(#arrow-gold); }
+      .mix { fill: none; stroke: #7253a3; stroke-width: 2; marker-end: url(#arrow-purple); }
+      .guide { fill: none; stroke: #8a570f; stroke-width: 2.5; stroke-dasharray: 8 5; }
+    </style>
+  </defs>
+
+  <text x="45" y="48" class="heading">A. Disease-course structure within each age group</text>
+  <rect x="35" y="66" width="1730" height="650" class="panel"/>
+
+  <rect x="60" y="105" width="1680" height="255" class="lane-u"/>
+  <text x="210" y="137" class="subheading">Unvaccinated pathway</text>
+
+  <rect x="100" y="185" width="90" height="56" class="node sus"/>
+  <text x="145" y="220" text-anchor="middle" class="label">S</text>
+  <rect x="270" y="185" width="90" height="56" class="node exposed"/>
+  <text x="315" y="220" text-anchor="middle" class="label">E</text>
+  <rect x="440" y="185" width="90" height="56" class="node infectious"/>
+  <text x="485" y="220" text-anchor="middle" class="label">I</text>
+  <path d="M190 213 H262" class="flow"/>
+  <path d="M360 213 H432" class="flow"/>
+  <text x="226" y="198" text-anchor="middle" class="parameter">λ<tspan baseline-shift="sub" font-size="11">i</tspan>S<tspan baseline-shift="sub" font-size="11">i</tspan></text>
+  <text x="400" y="198" text-anchor="middle" class="parameter">aE</text>
+
+  <rect x="680" y="108" width="115" height="52" class="node outcome"/>
+  <text x="737" y="140" text-anchor="middle" class="label">M</text>
+  <rect x="680" y="171" width="115" height="52" class="node outcome"/>
+  <text x="737" y="203" text-anchor="middle" class="label">H</text>
+  <rect x="680" y="234" width="115" height="52" class="node outcome"/>
+  <text x="737" y="266" text-anchor="middle" class="label">C</text>
+
+  <path d="M530 209 C590 209 610 134 672 134" class="flow"/>
+  <path d="M530 211 C590 211 610 197 672 197" class="flow"/>
+  <path d="M530 214 C590 214 610 260 672 260" class="flow"/>
+  <path d="M530 217 C580 217 580 330 680 330 H972" class="flow"/>
+  <text x="640" y="118" text-anchor="middle" class="parameter">p<tspan baseline-shift="sub" font-size="10">M</tspan></text>
+  <text x="640" y="181" text-anchor="middle" class="parameter">p<tspan baseline-shift="sub" font-size="10">H</tspan></text>
+  <text x="640" y="244" text-anchor="middle" class="parameter">p<tspan baseline-shift="sub" font-size="10">H</tspan>p<tspan baseline-shift="sub" font-size="10">C</tspan></text>
+  <text x="825" y="314" text-anchor="middle" class="parameter">p<tspan baseline-shift="sub" font-size="10">a</tspan></text>
+
+  <rect x="980" y="114" width="105" height="40" class="node recovered"/>
+  <text x="1032" y="140" text-anchor="middle" class="label">R<tspan baseline-shift="sub" font-size="12">M</tspan></text>
+  <rect x="980" y="163" width="105" height="40" class="node recovered"/>
+  <text x="1032" y="189" text-anchor="middle" class="label">R<tspan baseline-shift="sub" font-size="12">H</tspan></text>
+  <rect x="980" y="212" width="105" height="40" class="node recovered"/>
+  <text x="1032" y="238" text-anchor="middle" class="label">R<tspan baseline-shift="sub" font-size="12">C</tspan></text>
+  <rect x="980" y="261" width="105" height="40" class="node outcome"/>
+  <text x="1032" y="287" text-anchor="middle" class="label">Z<tspan baseline-shift="sub" font-size="12">s</tspan></text>
+  <rect x="980" y="310" width="105" height="40" class="node outcome"/>
+  <text x="1032" y="336" text-anchor="middle" class="label">Z<tspan baseline-shift="sub" font-size="12">a</tspan></text>
+  <rect x="1200" y="261" width="105" height="40" class="node death"/>
+  <text x="1252" y="287" text-anchor="middle" class="label">D<tspan baseline-shift="sub" font-size="12">s</tspan></text>
+  <rect x="1200" y="310" width="105" height="40" class="node death"/>
+  <text x="1252" y="336" text-anchor="middle" class="label">D<tspan baseline-shift="sub" font-size="12">a</tspan></text>
+
+  <path d="M795 134 H972" class="flow"/>
+  <path d="M795 197 C860 197 900 183 972 183" class="flow"/>
+  <path d="M795 260 C860 260 900 232 972 232" class="flow"/>
+  <path d="M795 260 C860 260 900 281 972 281" class="flow"/>
+  <path d="M1085 281 H1192" class="flow"/>
+  <path d="M1085 330 H1192" class="flow"/>
+  <text x="884" y="124" text-anchor="middle" class="parameter">γ<tspan baseline-shift="sub" font-size="10">M</tspan>M</text>
+  <text x="875" y="174" text-anchor="middle" class="parameter">γ<tspan baseline-shift="sub" font-size="10">H</tspan>(H−C)</text>
+  <text x="875" y="218" text-anchor="middle" class="parameter">(1−p<tspan baseline-shift="sub" font-size="10">s</tspan>)γ<tspan baseline-shift="sub" font-size="10">C</tspan>C</text>
+  <text x="888" y="264" text-anchor="middle" class="parameter">p<tspan baseline-shift="sub" font-size="10">s</tspan>γ<tspan baseline-shift="sub" font-size="10">C</tspan>C</text>
+  <text x="1138" y="271" text-anchor="middle" class="parameter">γ<tspan baseline-shift="sub" font-size="10">C</tspan>Z<tspan baseline-shift="sub" font-size="10">s</tspan></text>
+  <text x="1138" y="320" text-anchor="middle" class="parameter">γ<tspan baseline-shift="sub" font-size="10">Za</tspan>Z<tspan baseline-shift="sub" font-size="10">a</tspan></text>
+
+  <rect x="60" y="390" width="1680" height="285" class="lane-v"/>
+  <text x="210" y="423" class="subheading">Vaccinated pathway</text>
+
+  <rect x="100" y="492" width="90" height="56" class="node sus"/>
+  <text x="145" y="527" text-anchor="middle" class="label">S<tspan baseline-shift="sub" font-size="12">v</tspan></text>
+  <rect x="270" y="492" width="90" height="56" class="node exposed"/>
+  <text x="315" y="527" text-anchor="middle" class="label">E<tspan baseline-shift="sub" font-size="12">v</tspan></text>
+  <rect x="440" y="492" width="90" height="56" class="node infectious"/>
+  <text x="485" y="527" text-anchor="middle" class="label">I<tspan baseline-shift="sub" font-size="12">v</tspan></text>
+  <path d="M190 520 H262" class="flow"/>
+  <path d="M360 520 H432" class="flow"/>
+  <text x="226" y="505" text-anchor="middle" class="parameter">λ<tspan baseline-shift="sub" font-size="11">i</tspan>S<tspan baseline-shift="sub" font-size="11">vi</tspan>/f<tspan baseline-shift="sub" font-size="11">I</tspan></text>
+  <text x="400" y="505" text-anchor="middle" class="parameter">aE<tspan baseline-shift="sub" font-size="11">v</tspan></text>
+
+  <rect x="680" y="415" width="115" height="52" class="node outcome"/>
+  <text x="737" y="447" text-anchor="middle" class="label">M<tspan baseline-shift="sub" font-size="12">v</tspan></text>
+  <rect x="680" y="478" width="115" height="52" class="node outcome"/>
+  <text x="737" y="510" text-anchor="middle" class="label">H<tspan baseline-shift="sub" font-size="12">v</tspan></text>
+  <rect x="680" y="541" width="115" height="52" class="node outcome"/>
+  <text x="737" y="573" text-anchor="middle" class="label">C<tspan baseline-shift="sub" font-size="12">v</tspan></text>
+
+  <path d="M530 516 C590 516 610 441 672 441" class="flow"/>
+  <path d="M530 518 C590 518 610 504 672 504" class="flow"/>
+  <path d="M530 521 C590 521 610 567 672 567" class="flow"/>
+  <path d="M530 524 C580 524 580 637 680 637 H972" class="flow"/>
+  <text x="640" y="425" text-anchor="middle" class="parameter">p<tspan baseline-shift="sub" font-size="10">Mv</tspan></text>
+  <text x="640" y="488" text-anchor="middle" class="parameter">p<tspan baseline-shift="sub" font-size="10">H</tspan>/f<tspan baseline-shift="sub" font-size="10">H</tspan></text>
+  <text x="625" y="551" text-anchor="middle" class="parameter">p<tspan baseline-shift="sub" font-size="10">H</tspan>p<tspan baseline-shift="sub" font-size="10">C</tspan>/(f<tspan baseline-shift="sub" font-size="10">H</tspan>f<tspan baseline-shift="sub" font-size="10">C</tspan>)</text>
+  <text x="825" y="621" text-anchor="middle" class="parameter">p<tspan baseline-shift="sub" font-size="10">a</tspan>/f<tspan baseline-shift="sub" font-size="10">D</tspan></text>
+
+  <rect x="980" y="421" width="105" height="40" class="node recovered"/>
+  <text x="1032" y="447" text-anchor="middle" class="label">R<tspan baseline-shift="sub" font-size="12">Mv</tspan></text>
+  <rect x="980" y="470" width="105" height="40" class="node recovered"/>
+  <text x="1032" y="496" text-anchor="middle" class="label">R<tspan baseline-shift="sub" font-size="12">Hv</tspan></text>
+  <rect x="980" y="519" width="105" height="40" class="node recovered"/>
+  <text x="1032" y="545" text-anchor="middle" class="label">R<tspan baseline-shift="sub" font-size="12">Cv</tspan></text>
+  <rect x="980" y="568" width="105" height="40" class="node outcome"/>
+  <text x="1032" y="594" text-anchor="middle" class="label">Z<tspan baseline-shift="sub" font-size="12">sv</tspan></text>
+  <rect x="980" y="617" width="105" height="40" class="node outcome"/>
+  <text x="1032" y="643" text-anchor="middle" class="label">Z<tspan baseline-shift="sub" font-size="12">av</tspan></text>
+  <rect x="1200" y="568" width="105" height="40" class="node death"/>
+  <text x="1252" y="594" text-anchor="middle" class="label">D<tspan baseline-shift="sub" font-size="12">sv</tspan></text>
+  <rect x="1200" y="617" width="105" height="40" class="node death"/>
+  <text x="1252" y="643" text-anchor="middle" class="label">D<tspan baseline-shift="sub" font-size="12">av</tspan></text>
+
+  <path d="M795 441 H972" class="flow"/>
+  <path d="M795 504 C860 504 900 490 972 490" class="flow"/>
+  <path d="M795 567 C860 567 900 539 972 539" class="flow"/>
+  <path d="M795 567 C860 567 900 588 972 588" class="flow"/>
+  <path d="M1085 588 H1192" class="flow"/>
+  <path d="M1085 637 H1192" class="flow"/>
+  <text x="884" y="431" text-anchor="middle" class="parameter">γ<tspan baseline-shift="sub" font-size="10">M</tspan>M<tspan baseline-shift="sub" font-size="10">v</tspan></text>
+  <text x="875" y="481" text-anchor="middle" class="parameter">γ<tspan baseline-shift="sub" font-size="10">H</tspan>(H<tspan baseline-shift="sub" font-size="10">v</tspan>−C<tspan baseline-shift="sub" font-size="10">v</tspan>)</text>
+  <text x="875" y="525" text-anchor="middle" class="parameter">(1−p<tspan baseline-shift="sub" font-size="10">sv</tspan>)γ<tspan baseline-shift="sub" font-size="10">C</tspan>C<tspan baseline-shift="sub" font-size="10">v</tspan></text>
+  <text x="888" y="571" text-anchor="middle" class="parameter">p<tspan baseline-shift="sub" font-size="10">sv</tspan>γ<tspan baseline-shift="sub" font-size="10">C</tspan>C<tspan baseline-shift="sub" font-size="10">v</tspan></text>
+  <text x="1138" y="578" text-anchor="middle" class="parameter">γ<tspan baseline-shift="sub" font-size="10">C</tspan>Z<tspan baseline-shift="sub" font-size="10">sv</tspan></text>
+  <text x="1138" y="627" text-anchor="middle" class="parameter">γ<tspan baseline-shift="sub" font-size="10">Za</tspan>Z<tspan baseline-shift="sub" font-size="10">av</tspan></text>
+
+  <path d="M145 241 V484" class="vacc"/>
+  <text x="165" y="310" class="vacc-label">u<tspan baseline-shift="sub" font-size="11">i</tspan>(t): daily vaccination</text>
+  <path d="M128 492 V249" class="waning"/>
+  <text x="108" y="374" transform="rotate(-90 108 374)" text-anchor="middle" class="flow-label" fill="#8a570f">vaccination waning, 1/D<tspan baseline-shift="sub" font-size="11">wV</tspan></text>
+  <path d="M1085 134 H1110 M1085 183 H1110 M1085 232 H1110" class="guide"/>
+  <path d="M1110 232 V88 H145 V177" class="waning"/>
+  <text x="1118" y="82" class="flow-label" fill="#8a570f">recovery waning, 1/D<tspan baseline-shift="sub" font-size="11">wR</tspan></text>
+  <path d="M1085 441 H1110 M1085 490 H1110 M1085 539 H1110" class="guide"/>
+  <path d="M1110 539 V385 H85 V213 H92" class="waning"/>
+  <text x="1118" y="379" class="flow-label" fill="#8a570f">recovery waning, 1/D<tspan baseline-shift="sub" font-size="11">wR</tspan></text>
+
+  <rect x="1490" y="455" width="220" height="138" fill="#ffffff" stroke="#65a9c5" stroke-width="1.5" rx="8"/>
+  <text x="1600" y="480" text-anchor="middle" class="legend-title">Vaccine factors</text>
+  <text x="1512" y="506" class="legend-text">f<tspan baseline-shift="sub" font-size="11">I</tspan>: susceptibility</text>
+  <text x="1512" y="529" class="legend-text">f<tspan baseline-shift="sub" font-size="11">H</tspan>: hospitalisation</text>
+  <text x="1512" y="552" class="legend-text">f<tspan baseline-shift="sub" font-size="11">C</tspan>: ICU admission</text>
+  <text x="1512" y="575" class="legend-text">f<tspan baseline-shift="sub" font-size="11">D</tspan>: death</text>
+
+  <text x="45" y="765" class="heading">B. Replication across age groups and transmission mixing</text>
+  <rect x="35" y="784" width="1730" height="260" class="panel"/>
+
+  <rect x="75" y="830" width="185" height="150" class="node"/>
+  <text x="167" y="858" text-anchor="middle" class="label">Age groups:</text>
+  <text x="92" y="883" class="small">i = 1: 0-24 years</text>
+  <text x="92" y="905" class="small">i = 2: 25-44 years</text>
+  <text x="92" y="927" class="small">i = 3: 45-64 years</text>
+  <text x="92" y="949" class="small">i = 4: 65-74 years</text>
+  <text x="92" y="971" class="small">i = 5: 75+ years</text>
+
+  <rect x="408" y="820" width="365" height="170" fill="#f4effa" stroke="#7253a3" stroke-width="2" rx="10"/>
+  <text x="590" y="853" text-anchor="middle" class="label">Age-specific force of infection</text>
+  <text x="590" y="895" text-anchor="middle" class="box-text-large">λ<tspan baseline-shift="sub" font-size="11">i</tspan>(t) = Σ<tspan baseline-shift="sub" font-size="11">j</tspan> β<tspan baseline-shift="sub" font-size="11">ij</tspan>(t)[I<tspan baseline-shift="sub" font-size="11">j</tspan>(t) + I<tspan baseline-shift="sub" font-size="11">vj</tspan>(t)]</text>
+  <text x="590" y="930" text-anchor="middle" class="box-text-large">λ<tspan baseline-shift="sub" font-size="11">vi</tspan>(t) = λ<tspan baseline-shift="sub" font-size="11">i</tspan>(t) / f<tspan baseline-shift="sub" font-size="11">I</tspan></text>
+  <path d="M260 905 H400" class="mix"/>
+
+  <rect x="921" y="820" width="360" height="170" fill="#fff8db" stroke="#b7791f" stroke-width="2" rx="10"/>
+  <text x="1101" y="853" text-anchor="middle" class="label">Time-varying transmission with mixing</text>
+  <text x="1101" y="895" text-anchor="middle" class="box-text-large">β<tspan baseline-shift="sub" font-size="11">ij</tspan>(t) = β(t)w<tspan baseline-shift="sub" font-size="11">ij</tspan>(t)</text>
+  <text x="1101" y="930" text-anchor="middle" class="box-text-large">nominal R(t) = β(t)D<tspan baseline-shift="sub" font-size="11">I</tspan></text>
+  <text x="1101" y="965" text-anchor="middle" class="box-note-large">piecewise β(t); time-varying 5 × 5 W(t)</text>
+  <path d="M773 905 H913" class="flow"/>
+
+  <rect x="1430" y="820" width="285" height="170" fill="#edf7fb" stroke="#1677a6" stroke-width="2" rx="10"/>
+  <text x="1572" y="853" text-anchor="middle" class="label">Recorded outputs</text>
+  <text x="1572" y="892" text-anchor="middle" class="small">infections</text>
+  <text x="1572" y="920" text-anchor="middle" class="small">hospital and ICU occupancy</text>
+  <text x="1572" y="948" text-anchor="middle" class="small">hospital and ICU admissions</text>
+  <text x="1572" y="976" text-anchor="middle" class="small">daily and cumulative deaths</text>
+  <path d="M1281 905 H1422" class="flow"/>
+
+  <text x="50" y="1065" class="tiny">Subscripts i and j index the five age groups; subscript v denotes vaccinated states; a denotes the direct/non-hospital death route; s denotes the post-ICU death route.</text>
+</svg>

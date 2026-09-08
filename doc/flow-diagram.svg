@@ -1,0 +1,85 @@
+<svg width="100%" viewBox="0 0 1300 700" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Vaccination Scenario Analysis Flow Diagram</title>
+  <desc id="desc">Workflow from model optimization and calibration to simulations for manuscript counterfactual vaccination scenarios S1 through S5.</desc>
+  <style>
+    text {
+      font-family: Arial, Helvetica, sans-serif;
+      fill: #222;
+      font-size: 16px;
+    }
+    .box {
+      fill: #f8f9fb;
+      stroke: #444;
+      stroke-width: 1.5;
+      rx: 8;
+      ry: 8;
+    }
+    .scenario {
+      fill: #eef6ff;
+    }
+    .title {
+      font-weight: 700;
+    }
+    .arrow {
+      fill: none;
+      stroke: #555;
+      stroke-width: 2;
+      marker-end: url(#arrowhead);
+    }
+  </style>
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#555" />
+    </marker>
+  </defs>
+
+  <rect class="box" x="30" y="280" width="280" height="140" />
+  <text x="165" y="308" text-anchor="middle" class="title">1. Optimization</text>
+  <text x="165" y="336" text-anchor="middle" class="title">S0 Model: Actual Data</text>
+  <text x="165" y="366" text-anchor="middle">Optimize transmission parameters</text>
+
+  <rect class="box" x="350" y="280" width="280" height="140" />
+  <text x="490" y="308" text-anchor="middle" class="title">2. Calibration</text>
+  <text x="490" y="336" text-anchor="middle" class="title">S0 Model: actual data</text>
+  <text x="490" y="366" text-anchor="middle">Calibrate infected, hospitalization,</text>
+  <text x="490" y="394" text-anchor="middle">ICU, and death outputs</text>
+
+  <rect class="box" x="670" y="280" width="280" height="140" />
+  <text x="810" y="308" text-anchor="middle" class="title">3. Simulations</text>
+  <text x="810" y="338" text-anchor="middle">Scenario simulations</text>
+  <text x="810" y="366" text-anchor="middle">with perturbed transmission</text>
+  <text x="810" y="394" text-anchor="middle">and vaccination parameters</text>
+
+  <path class="arrow" d="M 310 350 H 342" />
+  <path class="arrow" d="M 630 350 H 662" />
+
+  <rect class="box scenario" x="1110" y="80" width="160" height="74" />
+  <text x="1190" y="110" text-anchor="middle" class="title">S1</text>
+  <text x="1190" y="138" text-anchor="middle">No vaccination</text>
+
+  <rect class="box scenario" x="1110" y="190" width="160" height="88" />
+  <text x="1190" y="222" text-anchor="middle" class="title">S2</text>
+  <text x="1190" y="250" text-anchor="middle">0.7 x observed</text>
+  <text x="1190" y="272" text-anchor="middle">vaccination</text>
+
+  <rect class="box scenario" x="1110" y="310" width="160" height="88" />
+  <text x="1190" y="342" text-anchor="middle" class="title">S3</text>
+  <text x="1190" y="370" text-anchor="middle">1.3 x observed</text>
+  <text x="1190" y="392" text-anchor="middle">vaccination</text>
+
+  <rect class="box scenario" x="1110" y="430" width="160" height="88" />
+  <text x="1190" y="462" text-anchor="middle" class="title">S4</text>
+  <text x="1190" y="490" text-anchor="middle">Age 65+ only,</text>
+  <text x="1190" y="512" text-anchor="middle">observed rollout</text>
+
+  <rect class="box scenario" x="1110" y="550" width="160" height="88" />
+  <text x="1190" y="582" text-anchor="middle" class="title">S5</text>
+  <text x="1190" y="610" text-anchor="middle">Age 65+ only,</text>
+  <text x="1190" y="632" text-anchor="middle">0.7 x observed</text>
+
+  <path class="arrow" d="M 950 350 C 1020 350 1060 117 1102 117" />
+  <path class="arrow" d="M 950 350 C 1020 350 1060 234 1102 234" />
+  <path class="arrow" d="M 950 350 C 1020 350 1060 354 1102 354" />
+  <path class="arrow" d="M 950 350 C 1020 350 1060 474 1102 474" />
+  <path class="arrow" d="M 950 350 C 1020 350 1060 594 1102 594" />
+</svg>
