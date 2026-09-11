@@ -14,6 +14,10 @@ log_progress = function(text) {
   message(sprintf("[%s] %s", format(Sys.time(), "%Y-%m-%d %H:%M:%S"), text))
 }
 
+analysis_seed = 2505
+RNGkind("L'Ecuyer-CMRG")
+set.seed(analysis_seed)
+
 log_progress("Starting analysis")
 
 
@@ -471,9 +475,6 @@ compute_tot_sum(spdat_scen4, date_start="2021-01-01", date_end="2021-12-31")
 
 # paralelizacija
 
-##################################################
-set.seed(2505)
-
 # Simulation settings
 Nsim = 500
 eps_pert = 0.10
@@ -486,6 +487,7 @@ log_progress(sprintf("Starting parallel simulations: %d simulations per scenario
 
 cl <- makeCluster(numCores) # create a cluster
 registerDoParallel(cl)
+parallel::clusterSetRNGStream(cl, analysis_seed + 1)
 
 log_progress(sprintf("Scenario S1 started using %d worker cores", numCores))
 
@@ -495,6 +497,7 @@ nB = length(Bw4)
 param_pert = scenario_parameters1
 
 results = foreach(i=1:Nsim, .combine=cbind, .export=c("lsoda"), .verbose=TRUE ) %dopar% {
+    set.seed(analysis_seed + 1000 + i)
     
     pert_vec = runif(nB, min = -1, max = 1)
     Bw4_pert = pmax(Bw4 * (1 + eps_pert * pert_vec), 0.005)
@@ -542,6 +545,7 @@ compute_tot_sum_CI(spdat_scen1, date_start="2021-01-01", date_end="2021-12-31")
 
 cl <- makeCluster(numCores) # create a cluster
 registerDoParallel(cl)
+parallel::clusterSetRNGStream(cl, analysis_seed + 2)
 
 log_progress(sprintf("Scenario S2 started using %d worker cores", numCores))
 
@@ -550,6 +554,7 @@ nB = length(Bw4)
 param_pert = scenario_parameters2
 
 results = foreach(i=1:Nsim, .combine=cbind, .export=c("lsoda"), .verbose=TRUE ) %dopar% {
+    set.seed(analysis_seed + 2000 + i)
     
     pert_vec = runif(nB, min = -1, max = 1)
     Bw4_pert = pmax(Bw4 * (1 + eps_pert * pert_vec), 0.005)
@@ -597,6 +602,7 @@ compute_tot_sum_CI(spdat_scen2, date_start="2021-01-01", date_end="2021-12-31")
 
 cl <- makeCluster(numCores) # create a cluster
 registerDoParallel(cl)
+parallel::clusterSetRNGStream(cl, analysis_seed + 3)
 
 log_progress(sprintf("Scenario S3 started using %d worker cores", numCores))
 
@@ -605,6 +611,7 @@ nB = length(Bw4)
 param_pert = scenario_parameters3
 
 results = foreach(i=1:Nsim, .combine=cbind, .export=c("lsoda"), .verbose=TRUE ) %dopar% {
+    set.seed(analysis_seed + 3000 + i)
     
     pert_vec = runif(nB, min = -1, max = 1)
     Bw4_pert = pmax(Bw4 * (1 + eps_pert * pert_vec), 0.005)
@@ -650,6 +657,7 @@ compute_tot_sum_CI(spdat_scen3, date_start="2021-01-01", date_end="2021-12-31")
 
 cl <- makeCluster(numCores) # create a cluster
 registerDoParallel(cl)
+parallel::clusterSetRNGStream(cl, analysis_seed + 5)
 
 log_progress(sprintf("Scenario S5 started using %d worker cores", numCores))
 
@@ -658,6 +666,7 @@ nB = length(Bw4)
 param_pert = scenario_parameters5
 
 results = foreach(i=1:Nsim, .combine=cbind, .export=c("lsoda"), .verbose=TRUE ) %dopar% {
+    set.seed(analysis_seed + 5000 + i)
     
     pert_vec = runif(nB, min = -1, max = 1)
     Bw4_pert = pmax(Bw4 * (1 + eps_pert * pert_vec), 0.005)
@@ -706,6 +715,7 @@ compute_tot_sum_CI(spdat_scen5, date_start="2021-01-01", date_end="2021-12-31")
 
 cl <- makeCluster(numCores) # create a cluster
 registerDoParallel(cl)
+parallel::clusterSetRNGStream(cl, analysis_seed + 6)
 
 log_progress(sprintf("Scenario S6 started using %d worker cores", numCores))
 
@@ -714,6 +724,7 @@ nB = length(Bw4)
 param_pert = scenario_parameters6
 
 results = foreach(i=1:Nsim, .combine=cbind, .export=c("lsoda"), .verbose=TRUE ) %dopar% {
+    set.seed(analysis_seed + 6000 + i)
     
     pert_vec = runif(nB, min = -1, max = 1)
     Bw4_pert = pmax(Bw4 * (1 + eps_pert * pert_vec), 0.005)

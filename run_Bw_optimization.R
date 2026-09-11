@@ -6,6 +6,10 @@ log_progress = function(text) {
   message(sprintf("[%s] %s", format(Sys.time(), "%Y-%m-%d %H:%M:%S"), text))
 }
 
+analysis_seed = 2505
+RNGkind("L'Ecuyer-CMRG")
+set.seed(analysis_seed)
+
 log_progress("Starting Bw optimization")
 
 project_dir = getwd()

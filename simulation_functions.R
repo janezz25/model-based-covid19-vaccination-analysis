@@ -159,9 +159,9 @@ combine_simulation_projections_over65 = function(pdat)
 combine_simulation_projections_over65_s56 = function(pdat) 
 {
   odat = pdat[pdat$group == "infections: daily 1",]
-  odat$value = 0.8*pdat[pdat$group == "infections: daily 1","value"] + 
-    0.8*pdat[pdat$group == "infections: daily 2","value"] + 
-    0.8*pdat[pdat$group == "infections: daily 3","value"] + 
+  odat$value = pdat[pdat$group == "infections: daily 1","value"] + 
+    pdat[pdat$group == "infections: daily 2","value"] + 
+    pdat[pdat$group == "infections: daily 3","value"] + 
     pdat[pdat$group == "infections: daily 4","value"] + 
     pdat[pdat$group == "infections: daily 5","value"]
   
