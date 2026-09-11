@@ -61,27 +61,33 @@ p_fatal_s_t[550:duration_time] = 25/100
 p_fatal_s_t[600:duration_time] = 40/100
 p_fatal_s_t[636:duration_time] = 20/100
 
+# Apply an age-specific odds ratio to the baseline ICU fatality probability.
+# An odds ratio of 3.5 means that the odds of dying after ICU are 3.5 times
+# the baseline odds. For a baseline probability of 40%, this gives 70%.
+apply_odds_ratio = function(probability, odds_ratio) {
+  odds_ratio * probability / (1 - probability + odds_ratio * probability)
+}
 
 
-p_fatal_s_t1 = 0.0 * p_fatal_s_t
-p_fatal_s_t2 = 0.0 * p_fatal_s_t
-p_fatal_s_t3 = 0.0 * p_fatal_s_t
-p_fatal_s_t4 = 0.8 * p_fatal_s_t
-p_fatal_s_t5 = 2.0 * p_fatal_s_t
+p_fatal_s_t1 = apply_odds_ratio(p_fatal_s_t, 0.0)
+p_fatal_s_t2 = apply_odds_ratio(p_fatal_s_t, 0.0)
+p_fatal_s_t3 = apply_odds_ratio(p_fatal_s_t, 0.0)
+p_fatal_s_t4 = apply_odds_ratio(p_fatal_s_t, 0.8)
+p_fatal_s_t5 = apply_odds_ratio(p_fatal_s_t, 2.0)
 
 # Adjust mortality in younger age groups for the ANG variant.
 # Asymptomatic deaths are unchanged because they are assumed to occur in hospital.
-p_fatal_s_t3[370:duration_time] = 1.0 * p_fatal_s_t[370:duration_time]
-p_fatal_s_t4[370:duration_time] = 1.75 * p_fatal_s_t[370:duration_time]
-p_fatal_s_t5[370:duration_time] = 4.0 * p_fatal_s_t[370:duration_time]
+p_fatal_s_t3[370:duration_time] = apply_odds_ratio(p_fatal_s_t[370:duration_time], 1.0)
+p_fatal_s_t4[370:duration_time] = apply_odds_ratio(p_fatal_s_t[370:duration_time], 1.75)
+p_fatal_s_t5[370:duration_time] = apply_odds_ratio(p_fatal_s_t[370:duration_time], 4.0)
 
-p_fatal_s_t3[430:duration_time] = 1.0 * p_fatal_s_t[430:duration_time]
-p_fatal_s_t4[430:duration_time] = 1.75 * p_fatal_s_t[430:duration_time]
-p_fatal_s_t5[430:duration_time] = 2.0 * p_fatal_s_t[430:duration_time]
+p_fatal_s_t3[430:duration_time] = apply_odds_ratio(p_fatal_s_t[430:duration_time], 1.0)
+p_fatal_s_t4[430:duration_time] = apply_odds_ratio(p_fatal_s_t[430:duration_time], 1.75)
+p_fatal_s_t5[430:duration_time] = apply_odds_ratio(p_fatal_s_t[430:duration_time], 2.0)
 
-p_fatal_s_t3[500:duration_time] = 2.0 * p_fatal_s_t[500:duration_time]
-p_fatal_s_t4[500:duration_time] = 3.5 * p_fatal_s_t[500:duration_time]
-p_fatal_s_t5[500:duration_time] = 4.0 * p_fatal_s_t[500:duration_time]
+p_fatal_s_t3[500:duration_time] = apply_odds_ratio(p_fatal_s_t[500:duration_time], 2.0)
+p_fatal_s_t4[500:duration_time] = apply_odds_ratio(p_fatal_s_t[500:duration_time], 3.5)
+p_fatal_s_t5[500:duration_time] = apply_odds_ratio(p_fatal_s_t[500:duration_time], 4.0)
 
 
 param$p_fatal_a1 = p_fatal_a_t1
