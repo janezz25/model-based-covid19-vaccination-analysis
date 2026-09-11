@@ -333,8 +333,14 @@ param$vaccfun5 = vfun5
 ### optimization and calibration ####
 ###################################################################
 
-# optimization parameters 
-param$Bw_opt_maxit = 10
+# Optimization parameters. Bw is stored as beta, so express epidemiological
+# bounds on the reproduction-number scale and convert them to beta.
+# Each L-BFGS-B iteration requires many model runs because the gradient of all
+# optimized coefficients is calculated numerically.
+param$Bw_opt_maxit = 20
+param$Bw_opt_factr = 1e7
+param$Bw_lower = 0.5 / param$D_infectious
+param$Bw_upper = 8.0 / param$D_infectious
 
 
 

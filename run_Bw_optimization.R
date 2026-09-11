@@ -44,6 +44,14 @@ Bw_optimization = optimize_Bw(
   optimize_indices = 17:length(Bw4)
 )
 
+if (Bw_optimization$fit$convergence != 0) {
+  stop(
+    "Bw optimization did not converge: ",
+    Bw_optimization$fit$message,
+    call. = FALSE
+  )
+}
+
 Bw4 = Bw_optimization$Bw
 Bfun4 = Bw_optimization$Bfun
 save(

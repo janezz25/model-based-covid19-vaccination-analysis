@@ -80,6 +80,9 @@ optimize_Bw = function(
   if (length(maxit) != 1 || !is.finite(maxit) || maxit < 1)
     stop("Bw_opt_maxit must be one positive finite value")
   maxit = as.integer(maxit)
+  factr = if (is.null(param$Bw_opt_factr)) 1e7 else param$Bw_opt_factr
+  if (length(factr) != 1 || !is.finite(factr) || factr <= 0)
+    stop("Bw_opt_factr must be one positive finite value")
   evaluation = 0L
 
   # Evaluate weighted mismatch over the requested calendar-date window.
@@ -147,6 +150,7 @@ optimize_Bw = function(
     upper = upper_opt,
     control = list(
       maxit = maxit,
+      factr = factr,
       trace = if (show_progress) 1 else 0,
       REPORT = 1
     )
@@ -159,6 +163,7 @@ optimize_Bw = function(
     Bfun = Bt_rect_time(duration_time, Bw_opt, win_len),
     fit = fit,
     maxit = maxit,
+    factr = factr,
     objective_evaluations = evaluation,
     win_len = win_len,
     optimize_indices = optimize_indices
