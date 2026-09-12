@@ -84,13 +84,14 @@ optimize_Bw = function(
   if (length(factr) != 1 || !is.finite(factr) || factr <= 0)
     stop("Bw_opt_factr must be one positive finite value")
   evaluation = 0L
+  evaluation_history = list()
 
   # Evaluate weighted mismatch over the requested calendar-date window.
   objective = function(Bw_opt_values) {
     evaluation <<- evaluation + 1L
+    Bw = Bw_fixed
+    Bw[optimize_indices] = Bw_opt_values
     value = tryCatch({
-      Bw = Bw_fixed
-      Bw[optimize_indices] = Bw_opt_values
       Bfun = Bt_rect_time(duration_time, Bw, win_len)
       pdat = calculate_model_observed_vaccination_waning(
         Bfun, observed_data, duration_time, w, param_obj
@@ -119,6 +120,11 @@ optimize_Bw = function(
         icu = target("ICU 1", modeled$icu),
         deaths = target("deaths: daily 1", modeled$deaths)
       )
+      # Daily reported deaths are noisy, so compare the model with the same
+      # centered 7-day average of observed deaths.
+      targets$deaths$observed = as.numeric(stats::filter(
+        targets$deaths$observed, rep(1 / 7, 7), sides = 2
+      ))
 
       loss = weights$infections * nrmse(targets$infections$observed, targets$infections$modeled) +
         weights$hosp * nrmse(targets$hosp$observed, targets$hosp$modeled) +
@@ -131,6 +137,11 @@ optimize_Bw = function(
       })
 
     value = as.numeric(value)
+    # optim() does not provide an accepted-iteration callback. Record every
+    # evaluated coefficient vector, including gradient and line-search probes.
+    evaluation_history[[evaluation]] <<- c(
+      evaluation = evaluation, loss = value, Bw
+    )
     if (show_progress) {
       message(sprintf(
         "Bw optimization objective evaluation %d: loss = %.6g",
@@ -158,6 +169,10 @@ optimize_Bw = function(
 
   Bw_opt = Bw_fixed
   Bw_opt[optimize_indices] = fit$par
+  evaluation_history = as.data.frame(do.call(rbind, evaluation_history))
+  names(evaluation_history) = c(
+    "evaluation", "loss", paste0("Bw", seq_along(Bw0))
+  )
   list(
     Bw = Bw_opt,
     Bfun = Bt_rect_time(duration_time, Bw_opt, win_len),
@@ -165,6 +180,7 @@ optimize_Bw = function(
     maxit = maxit,
     factr = factr,
     objective_evaluations = evaluation,
+    evaluation_history = evaluation_history,
     win_len = win_len,
     optimize_indices = optimize_indices
   )
